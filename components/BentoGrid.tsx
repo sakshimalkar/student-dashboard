@@ -1,18 +1,26 @@
-'use client'
-import { motion } from 'framer-motion'
+ 'use client'
+import { motion, Variants } from 'framer-motion'
 import HeroTile from './HeroTile'
 import CourseTile from './CourseTile'
 import ActivityTile from './ActivityTile'
 import { Course } from '@/types'
 
-const container = {
+const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1 } }
 }
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 260, damping: 22 } }
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 260,
+      damping: 22
+    }
+  }
 }
 
 export default function BentoGrid({ courses }: { courses: Course[] }) {
